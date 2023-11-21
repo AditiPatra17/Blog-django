@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+{% block content %}
+    
+  <h2><u>User Profile</u></h2>
+  <p><strong>Username:</strong> {{ user.username }}</p>
+  <p><strong>Profile Picture:</strong></p>
+  <img src="{{ user.picture.url }}" alt="{{ user.username }}" class="img-thumbnail"/>
+  <p><strong>Roles:</strong></p>
+  <ul>
+    {% if user.is_manager %}<li>Manager</li>{% endif %}
+    {% if user.is_coordinator %}<li>Coordinator</li>{% endif %}
+  </ul>
+  <center><a href="{% url 'articles:list' %}"><u>Back to Home</u></a></center>
+{% endblock %}
